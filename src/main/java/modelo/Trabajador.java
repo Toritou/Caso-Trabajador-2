@@ -4,8 +4,8 @@ public class Trabajador extends Persona {
 	private String afp;
 	private String isapre;
 
-	public Trabajador(String afp, String isapre) {
-		super();
+	public Trabajador(String nombre, int id, String afp, String isapre) {
+		super(nombre, id);
 		this.afp = afp;
 		this.isapre = isapre;
 	}
@@ -14,16 +14,9 @@ public class Trabajador extends Persona {
 		return afp;
 	}
 
-	public void setAfp(String afp) {
-		this.afp = afp;
-	}
 
 	public String getIsapre() {
 		return isapre;
-	}
-
-	public void setIsapre(String isapre) {
-		this.isapre = isapre;
 	}
 
 }

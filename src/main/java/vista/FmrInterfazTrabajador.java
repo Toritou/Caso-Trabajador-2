@@ -1,35 +1,46 @@
 package vista;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import datos.DataSource;
+import modelo.Trabajador;
 
-public class FmrInterfazTrabajador extends JFrame implements ActionListener {
+public class FmrInterfazTrabajador extends JFrame {
+    private Trabajador trabajador;
+    private DataSource dataSource;
 
-
-    private JPanel jpInterfaz;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton btnEditar;
-    private JButton btnSalir;
-    private JButton btnLeer;
-
-    public FmrInterfazTrabajador(){
-        setTitle("Interfaz del Trabajador");
-        setContentPane(jpInterfaz);
-        setSize(800, 600);
-        setVisible(true);
-        setLocationRelativeTo(null);
-
-
-        btnSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+    public FmrInterfazTrabajador(DataSource dataSource) {
+        this.dataSource = dataSource;
+        initialize();
+        loadData();
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
+
+    private void initialize() {
+        setTitle("Interfaz Trabajador");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setVisible(true);
+    }
+
+    private void loadData() {
+        dataSource.open();
+        this.trabajador = new Trabajador("Luis Toro", 12345, "AFP UNO", "Fonasa");
+        dataSource.close();
+
+        displayWorkerData();
+    }
+
+    private void displayWorkerData() {
+        if (trabajador != null) {
+            JLabel nameLabel = new JLabel("Nombre: " + trabajador.getNombre());
+            JLabel idLabel = new JLabel("ID: " + trabajador.getId());
+            JLabel afpLabel = new JLabel("AFP: " + trabajador.getAfp());
+            JLabel isapreLabel = new JLabel("Isapre: " + trabajador.getIsapre());
+
+            add(nameLabel);
+            add(idLabel);
+            add(afpLabel);
+            add(isapreLabel);
+        }
     }
 }

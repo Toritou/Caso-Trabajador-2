@@ -1,40 +1,20 @@
 package modelo;
 
 public class Persona {
-	protected String nombre;
-	protected String apellido;
-	protected String rut;
+	private String nombre;
+	private int id;
 
-	public Persona(String nombre, String apellido, String rut) {
+	public Persona(String nombre, int id) {
 		this.nombre = nombre;
-		this.apellido = apellido;
-		this.rut = rut;
-	}
-
-	public Persona() {
+		this.id = id;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getRut() {
-		return rut;
-	}
-
-	public void setRut(String rut) {
-		this.rut = rut;
+	public int getId() {
+		return id;
 	}
 }
